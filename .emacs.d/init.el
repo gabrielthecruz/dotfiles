@@ -1,4 +1,3 @@
-
 (cond
   ((eq system-type 'windows-nt)
     (setq custom-file "C:/Users/gabri/AppData/Roaming/.emacs.d/emacs.custom.el")
@@ -20,13 +19,17 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+(setq tab-width 2)
+(setq c-basic-offset 2)
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-vertical-mode 1)
-(global-display-line-numbers-mode)
+(global-display-line-numbers-mode 1)
+(setq display-line-numbers-type 'relative)
 
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
@@ -40,9 +43,9 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (csharp-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
+    (csharp-mode . lsp)
+    ;; if you want which-key integration
+    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 ;; optionally
@@ -59,8 +62,8 @@
 
 ;; optional if you want which-key integration
 (use-package which-key
-    :config
-    (which-key-mode))
+  :config
+  (which-key-mode))
 
 (use-package company :ensure t)
 
