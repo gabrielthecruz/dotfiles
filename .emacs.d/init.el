@@ -85,5 +85,8 @@
 ;; Optional: Change where smex saves its history file (default is ~/.smex-items)
 ;; (setq smex-save-file "~/.emacs.d/smex-history")
 
+;; attach auto fill mode to org mode
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 (load-file custom-file)
 
