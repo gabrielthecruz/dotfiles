@@ -1,20 +1,13 @@
-(cond
-  ((eq system-type 'windows-nt)
-    (setq custom-file "C:/Users/gabri/AppData/Roaming/.emacs.d/emacs.custom.el")
-    (add-to-list 'load-path "C:/Users/gabri/AppData/Roaming/.emacs.d/custom-packages/")
-  )
-
-  ((eq system-type 'gnu/linux)
-    (setq custom-file "~/.emacs.d/emacs.custom.el")
-    (add-to-list 'load-path "~/.emacs.d/custom-packages/")
-  ))
+(setq custom-file "~/.emacs.d/emacs.custom.el")
+(add-to-list 'load-path "~/.emacs.d/custom-packages/")
 
 (setq inhibit-startup-message t)
+(setq ring-bell-function 'ignore)
 
-; (add-to-list 'default-frame-alist '(width . 80))
-; (add-to-list 'default-frame-alist '(height . 25))
-; (add-to-list 'default-frame-alist '(top . 75))
-; (add-to-list 'default-frame-alist '(left . 250))
+;; (add-to-list 'default-frame-alist '(width . 80))
+;; (add-to-list 'default-frame-alist '(height . 25))
+;; (add-to-list 'default-frame-alist '(top . 75))
+;; (add-to-list 'default-frame-alist '(left . 250))
 (add-to-list 'default-frame-alist '(font . "Iosevka-16"))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -30,6 +23,11 @@
 (ido-vertical-mode 1)
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
+;; unblock space on minibuffer
+(define-key minibuffer-local-completion-map (kbd "SPC") 'self-insert-command)
+
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq auto-save-default nil)
 
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
@@ -67,7 +65,7 @@
 
 (use-package company :ensure t)
 
-; smex configuration
+;; smex configuration
 (require 'smex)
 (smex-initialize)
 
@@ -85,8 +83,33 @@
 ;; Optional: Change where smex saves its history file (default is ~/.smex-items)
 ;; (setq smex-save-file "~/.emacs.d/smex-history")
 
-;; attach auto fill mode to org mode
+;; attach auto-fill-mode to org-mode
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-(load-file custom-file)
+;; org-roam
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "G:/My Drive/Org Mode")
+  (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :if-new (file+head "${title}.org" "#+date: %U\n#+title: ${title}\n#+filetags: \n")
+      :unnarrowed t))
+   ("t" "trivia" plain "%?"
+    :if-new (file+head "${title}.org" ":PROPERTIES:\n:ID: ${id}\n:ROAM_KEY: ${key}\n:END:\n#+date: %U\n#+title: ${title}\n#+filetags: \n")
+    :unnarrowed t)
+   ("b" "book" plain "\n* Source\n- Book: {book}\n- Author: {author}\n- Year: {year}\n- Chapter: {chapter}\n"
+    :if-new (file+head "${title}.org" "#+date: %U\n#+title: ${title}\n#+filetags: \n")
+    :unnarrowed t))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+	 ("C-c n f" . org-roam-node-find)
+	 ("C-c n i" . org-roam-node-insert)
+	 :map org-mode-map
+	 ("C-M-i" . completion-at-point))
+  :config
+  (org-roam-setup))
 
+(load-file custom-file)
