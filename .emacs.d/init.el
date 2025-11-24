@@ -1,6 +1,10 @@
 (setq custom-file "~/.emacs.d/emacs.custom.el")
 (add-to-list 'load-path "~/.emacs.d/custom-packages/")
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 
@@ -31,10 +35,6 @@
 
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
-
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
 
 (use-package lsp-mode
   :init
@@ -113,3 +113,4 @@
   (org-roam-setup))
 
 (load-file custom-file)
+
