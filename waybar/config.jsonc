@@ -20,7 +20,7 @@
     "group/networking"
   ],
   "clock": {
-    "format": "{:%I:%M:%S %p}",
+    "format": "{:%Y-%m-%d %I:%M:%S %p}",
     "interval": 1,
     "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar-weeks-pos": "right",
