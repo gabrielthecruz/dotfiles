@@ -6,34 +6,21 @@
     "hyprland/workspaces",
     "memory",
     "cpu",
-    "temperature",
-    "custom/powerDraw"
+    "temperature"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
     "tray",
-    "custom/clipboard",
+    "group/kblang",
     "bluetooth",
     "group/audio",
-    "group/networking"
+    "group/networking",
+    "custom/powermenu"
   ],
   "clock": {
-    "format": "{:%Y-%m-%d %I:%M:%S %p}",
-    "interval": 1,
-    "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "calendar-weeks-pos": "right",
-    "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
-    "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
-    "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
-    "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
-  },
-  "hyprland/language": {
-    "format": "Lang: {long}",
-    "format-en": "AMERICA, HELL YEAH!",
-    "format-tr": "As bayrakları",
-    "keyboard-name": "at-translated-set-2-keyboard"
+    "format": "{:%b %d %I:%M %p}",
   },
   "disk": {
     "interval": 30,
@@ -64,23 +51,15 @@
     "critical-threshold": 80,
     "on-click": "foot btop",
   },
-  "custom/powerDraw": {
-    "format": "{}",
+  "custom/powermenu": {
+    "format": " ",
     "interval": 1,
-    "exec": "~/.config/waybar/scripts/powerdraw.sh",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh",
     "return-type": "json"
   },
   "tray": {
     "icon-size": 14,
     "spacing": 10
-  },
-  "custom/clipboard": {
-    // "exec": "echo '󰅍'",
-    "interval": 5,
-    "tooltip": true,
-    // "tooltip-format": "{output}",
-    // "exec-tooltip": "sh -c cliphist list | head -n 5",
-    "on-click": "sh -c 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'"
   },
   "bluetooth": {
     "format-on": "󰂰",
@@ -158,5 +137,42 @@
       "network",
       "network#speed"
     ]
+  },
+  "group/kblang": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "hyprland/language",
+      "custom/kb_br_lang",
+      "custom/kb_us_lang",
+      "custom/kb_ru_lang"
+    ]
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "tooltip": true,
+    "tooltip-format": "Keyboard layout",
+    "format-en-intl": "🇧🇷",
+    "format-en": "🇺🇸",
+    "format-ru": "🇷🇺",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+  },
+  "custom/kb_br_lang": {
+    "format": "🇧🇷",
+    "tooltip": false,
+    "on-click": "hyprctl switchxkblayout current 0"
+  },
+  "custom/kb_us_lang": {
+    "format": "🇺🇸",
+    "tooltip": false,
+    "on-click": "hyprctl switchxkblayout current 1"
+  },
+  "custom/kb_ru_lang": {
+    "format": "🇷🇺",
+    "tooltip": false,
+    "on-click": "hyprctl switchxkblayout current 2"
   }
 }

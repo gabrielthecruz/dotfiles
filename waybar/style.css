@@ -1,7 +1,7 @@
 * {
     border: none;
     font-size: 14px;
-    font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF" ;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF";
     min-height: 20px;
 }
 
@@ -29,9 +29,13 @@ window#waybar {
   margin-top: 2px;
   background: #000000;
 }
+#custom-kb_ru_lang,
+#custom-kb_us_lang,
+#custom-kb_br_lang {
+    margin-right: 5px;
+}
 
-#battery,
-#custom-clipboard,
+#custom-powermenu,
 #bluetooth,
 #pulseaudio,
 #network,
