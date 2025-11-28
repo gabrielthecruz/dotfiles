@@ -10,6 +10,8 @@ pacman -S kitty
 pacman -S piper # mouse config
 pacman -S pavucontrol
 
-
 flatpak install spotify
 flatpak install bitwarden
+
+# programming
+pacman -S dotnet-sdk-9.0
