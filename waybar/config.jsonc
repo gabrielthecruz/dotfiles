@@ -6,7 +6,9 @@
     "hyprland/workspaces",
     "memory",
     "cpu",
-    "temperature"
+    "disk",
+    "temperature",
+    "mpris"
   ],
   "modules-center": [
     "clock"
@@ -19,6 +21,23 @@
     "group/networking",
     "custom/powermenu"
   ],
+  "mpris": {
+    "format": "{player_icon} {artist} - {title}",
+    "max-length": 50,
+    "player-icons": {
+        "default": "",
+        "spotify": "",
+	"firefox": ""
+    },
+    "status-icons": {
+        "paused": "",
+        "playing": "▶",
+        "stopped": "■"
+    },
+    "tooltip": true,
+    "tooltip-format": "{title}\n{artist}\n{album}",
+    "on-click": "playerctl play-pause"
+  },
   "clock": {
     "format": "{:%b %d %I:%M %p}",
   },
@@ -153,12 +172,11 @@
   },
   "hyprland/language": {
     "format": "{}",
-    "tooltip": true,
-    "tooltip-format": "Keyboard layout",
     "format-en-intl": "🇧🇷",
     "format-en": "🇺🇸",
     "format-ru": "🇷🇺",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    "on-click": "hyprctl switchxkblayout current next",
+    "on-click-right": "hyprctl switchxkblayout current prev"
   },
   "custom/kb_br_lang": {
     "format": "🇧🇷",

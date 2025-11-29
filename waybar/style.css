@@ -29,12 +29,14 @@ window#waybar {
   margin-top: 2px;
   background: #000000;
 }
+
 #custom-kb_ru_lang,
 #custom-kb_us_lang,
 #custom-kb_br_lang {
     margin-right: 5px;
 }
 
+#mpris,
 #custom-powermenu,
 #bluetooth,
 #pulseaudio,
