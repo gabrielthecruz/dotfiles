@@ -3,7 +3,7 @@
 pacman -S emacs
 pacman -S pipewire wireplumber xdg-desktop-portal-hyprland dunst
 pacman -S ttf-jetbrains-mono-nerd
-pacman -S hyprland hyprlock hyprshot
+pacman -S hyprland hyprlock hyprshot hyprsunset hyprpaper
 pacman -S waybar rofi rofi-bluetooth
 pacman -S gimp
 pacman -S kitty
@@ -15,3 +15,7 @@ flatpak install bitwarden
 
 # programming
 pacman -S dotnet-sdk-9.0
+
+# qol
+pacman -S nautilus-open-any-terminal
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
