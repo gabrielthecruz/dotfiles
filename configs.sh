@@ -9,6 +9,9 @@
 # org-roam
 # org-roam-ui
 # smex
+# lsp-mode [ M-x > lsp-install-server > omnisharp ]
+# lsp-ui
+# drag-stuff
 cp .emacs.d/ ~/
 touch ~/.emacs.d/emacs.custom.el
 

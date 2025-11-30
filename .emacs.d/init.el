@@ -54,6 +54,9 @@
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
+;; omnisharp/csharp configs
+(setq lsp-headerline-breadcrumb-enable nil)
+
 ;; optionally if you want to use debugger
 (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
@@ -64,6 +67,11 @@
   (which-key-mode))
 
 (use-package company :ensure t)
+
+;; drag-stuff
+(require 'drag-stuff)
+(drag-stuff-global-mode 1)
+(drag-stuff-define-keys)
 
 ;; smex configuration
 (require 'smex)
@@ -92,7 +100,7 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory "G:/My Drive/Org Mode")
+  (org-roam-directory "~/org/")
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
@@ -113,4 +121,3 @@
   (org-roam-setup))
 
 (load-file custom-file)
-
