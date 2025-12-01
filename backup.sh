@@ -12,3 +12,6 @@ cp -ruf ~/.config/waybar/ .
 
 # rofi
 cp -ruf ~/.config/rofi/ .
+
+# mpv
+cp -ruf ~/.config/mpv/ .

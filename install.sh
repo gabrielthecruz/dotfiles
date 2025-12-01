@@ -9,6 +9,7 @@ pacman -S gimp
 pacman -S kitty
 pacman -S piper # mouse config
 pacman -S pavucontrol
+pacman -S mpv
 
 flatpak install spotify
 flatpak install bitwarden
