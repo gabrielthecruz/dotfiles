@@ -6,8 +6,8 @@
     "hyprland/workspaces",
     "memory",
     "cpu",
-    "disk",
-    "temperature",
+    "disk#c",
+    "disk#d",
     "mpris"
   ],
   "modules-center": [
@@ -40,11 +40,17 @@
   },
   "clock": {
     "format": "{:%b %d %I:%M %p}",
+    "tooltip": false
   },
-  "disk": {
+  "disk#c": {
     "interval": 30,
     "format": " {percentage_used}%",
     "path": "/"
+  },
+  "disk#d": {
+    "interval": 30,
+    "format": " {percentage_used}%",
+    "path": "/mnt/d/"
   },
   "memory": {
     "format": " {percentage}%"
@@ -62,13 +68,6 @@
       "▇",
       "█"
     ],
-  },
-  "temperature": {
-    "format": " {temperatureC}°C",
-    "format-critical": " {temperatureC}°C",
-    "interval": 1,
-    "critical-threshold": 80,
-    "on-click": "foot btop",
   },
   "custom/powermenu": {
     "format": " ",
