@@ -14,10 +14,6 @@ pacman -S mpv
 flatpak install spotify
 flatpak install bitwarden
 
-# qol
-pacman -S nautilus-open-any-terminal
-gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
-
 # programming
 pacman -S dotnet-sdk-9.0
 
